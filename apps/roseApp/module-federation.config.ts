@@ -1,4 +1,11 @@
-import { ModuleFederationConfig } from '@nx/module-federation';
+import { ModuleFederationConfig, SharedFunction } from '@nx/module-federation';
+
+const shared: SharedFunction = (libraryName, defaultConfig) => {
+  if (libraryName === '@lucide/angular') {
+    return false;
+  }
+  return defaultConfig;
+};
 
 const config: ModuleFederationConfig = {
   name: 'roseApp',
@@ -6,9 +13,8 @@ const config: ModuleFederationConfig = {
     './Routes': 'apps/roseApp/src/app/remote-entry/entry.routes.ts',
     './CheckoutRoutes': 'apps/roseApp/src/app/remote-entry/checkout.routes.ts',
   },
+  shared,
 };
 
-/**
- * Nx requires a default export of the config to allow correct resolution of the module federation graph.
- **/
 export default config;
+

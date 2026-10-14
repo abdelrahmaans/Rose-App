@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "start": "nx serve shell",
-    "build": "nx run-many -t build --configuration=production && node scripts/prepare-deploy.js",
-    "build:all": "nx run-many -t build --configuration=production && node scripts/prepare-deploy.js",
+    "build": "nx run-many -t build --configuration=production --parallel=2 && node scripts/prepare-deploy.js",
+    "build:all": "nx run-many -t build --configuration=production --parallel=2 && node scripts/prepare-deploy.js",
     "test": "nx run-many -t test",
     "lint": "nx run-many -t lint"
   },
