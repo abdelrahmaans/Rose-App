@@ -2,7 +2,13 @@
   "name": "@org/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start": "nx serve shell",
+    "build": "nx run-many -t build --configuration=production && node scripts/prepare-deploy.js",
+    "build:all": "nx run-many -t build --configuration=production && node scripts/prepare-deploy.js",
+    "test": "nx run-many -t test",
+    "lint": "nx run-many -t lint"
+  },
   "private": true,
   "dependencies": {
     "@angular-devkit/build-angular": "21.2.7",
