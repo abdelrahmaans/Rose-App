@@ -18,6 +18,12 @@ remotes.forEach((remote) => {
   const dest = path.join(shellDist, remote);
   if (fs.existsSync(src)) {
     fs.cpSync(src, dest, { recursive: true });
+    // Remove remote's standalone index.html to prevent static hosts (Vercel/Netlify) from serving it on route refresh
+    const remoteIndexHtml = path.join(dest, 'index.html');
+    if (fs.existsSync(remoteIndexHtml)) {
+      fs.unlinkSync(remoteIndexHtml);
+      console.log(`🧹 Removed ${remote}/index.html to prevent route collision on refresh.`);
+    }
     console.log(`✅ Copied ${remote} to ${path.relative(rootDir, dest)}`);
   } else {
     console.warn(`⚠️ Warning: ${remote} build not found at: ${src}`);
