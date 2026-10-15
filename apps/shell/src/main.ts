@@ -1,9 +1,9 @@
 import { registerRemotes } from '@module-federation/enhanced/runtime';
 
 const defaultRemotes = [
-  { name: 'adminDashboard', entry: '/adminDashboard/mf-manifest.json' },
-  { name: 'authApp', entry: '/authApp/mf-manifest.json' },
-  { name: 'roseApp', entry: '/roseApp/mf-manifest.json' },
+  { name: 'adminDashboard', entry: '/mf-remotes/adminDashboard/mf-manifest.json' },
+  { name: 'authApp', entry: '/mf-remotes/authApp/mf-manifest.json' },
+  { name: 'roseApp', entry: '/mf-remotes/roseApp/mf-manifest.json' },
 ];
 
 function bootstrapApp(): void {
